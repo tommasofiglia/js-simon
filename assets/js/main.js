@@ -52,7 +52,7 @@ $(function () {
 
   }
 
-  console.log(casualNumbers);
+  console.log("I numeri estratti dal pc sono " + casualNumbers);
 
   // Scrivo cosa succede quando clicco su "Avvia Gioco".
 
@@ -87,7 +87,6 @@ $(function () {
         } else if (!verifyInArray(userNumbers , numeroInserito) && verifyInArray(casualNumbers , numeroInserito)) {
           userNumbers.push(numeroInserito);
           numeriIndovinati.push(numeroInserito);
-          console.log("Hai inserito " + numeriIndovinati.length + " numeri giusti");
         } else if (!verifyInArray(userNumbers , numeroInserito)) {
           userNumbers.push(numeroInserito);
           console.log(userNumbers);
@@ -96,7 +95,8 @@ $(function () {
         }
 
       }
-
+      console.log("I numeri che hai inserito sono " + userNumbers);
+      console.log("Hai inserito " + numeriIndovinati.length + " numeri giusti e sono " + numeriIndovinati);
       // Restituzione del punteggio all'utente
 
       if (numeriIndovinati.length == 0) {
@@ -104,6 +104,9 @@ $(function () {
         location.reload();
       } else if (numeriIndovinati.length == 1) {
         alert("Hai indovinato un solo numero ed è " + numeriIndovinati);
+        location.reload();
+      } else if (numeriIndovinati.length == 5) {
+        alert("Hai indovinato tutti e 5 i numeri! Sei proprio un fenomeno. I numeri erano: " + numeriIndovinati);
         location.reload();
       } else {
         alert("I numeri che hai indovinato sono " + numeriIndovinati.length + " ovvero: " + numeriIndovinati);
