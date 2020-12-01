@@ -9,8 +9,12 @@ $(function () {
   var numberList = $('.casual_numbers');
   var startButton = $('#start_game');
   var hiddenElements = $('.hidden');
+  var time = $('.time');
+  var score = $('.score');
   var casualNumbers = [];
   var userNumbers = [];
+  var seconds;
+  var numeroInserito;
 
 // Scrivo una funzione che generi un numero da 1 a numero casuale.
 
@@ -46,14 +50,31 @@ $(function () {
   }
 
   console.log(casualNumbers);
+
 // Scrivo cosa succede quando clicco su "Avvia Gioco".
 
   startButton.click(function() {
+    seconds = 30;
+    time.html(seconds);
 
-    setTimeout(game, 30000);
+    hiddenElements.removeClass('hidden');
+
+    setTimeout(game, 3000);
 
     function game() {
-      console.log("we");
+      hiddenElements.addClass('hidden');
+
+      for (var i = 0; userNumbers.length < 5; i++) {
+        var numeroInserito = Number(prompt('Aggiungi uno dei numeri visti prima'));
+
+        if (!verifyInArray(userNumbers , numeroInserito)) {
+          userNumbers.push(numeroInserito);
+            console.log(userNumbers);
+        } else if (numeroInserito == 0 ){
+          alert("Numero non valido");
+        }
+      }
+
     }
 
   });
