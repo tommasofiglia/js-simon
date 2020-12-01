@@ -96,7 +96,7 @@ $(function () {
       }
       // Restituzione del punteggio all'utente
 
-      alert("I numeri che hai indovinato sono " + numeriIndovinati.length);
+      alert("I numeri che hai indovinato sono " + numeriIndovinati.length + " ovvero: " + numeriIndovinati);
       location.reload();
 
     }
