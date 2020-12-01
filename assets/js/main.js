@@ -13,6 +13,7 @@ $(function () {
   var score = $('.score');
   var casualNumbers = [];
   var userNumbers = [];
+  var numeriIndovinati = [];
   var seconds;
   var numeroInserito;
 
@@ -59,21 +60,35 @@ $(function () {
 
     hiddenElements.removeClass('hidden');
 
-    setTimeout(game, 3000);
+    setTimeout(game, 30000);
+
+// Funzione che, passati i 30 secondi, cancella il testo contenente i numeri e apre il prompt per fare giocare l'utente
 
     function game() {
+
       hiddenElements.addClass('hidden');
 
       for (var i = 0; userNumbers.length < 5; i++) {
         var numeroInserito = Number(prompt('Aggiungi uno dei numeri visti prima'));
 
-        if (!verifyInArray(userNumbers , numeroInserito)) {
+
+        if (numeroInserito == 0 || numeroInserito > 100 || isNaN(numeroInserito)){
+          alert("Il numero che hai inserito non è valido! Ricorda che sono ammessi solo numeri compresi tra 1 e 100 e che non puoi scrivere alcuna lettera.");
+        } else if (!verifyInArray(userNumbers , numeroInserito) && verifyInArray(casualNumbers , numeroInserito)) {
           userNumbers.push(numeroInserito);
-            console.log(userNumbers);
-        } else if (numeroInserito == 0 ){
-          alert("Numero non valido");
+          numeriIndovinati.push(numeroInserito);
+          console.log("Hai inserito " + numeriIndovinati.length + " numeri giusti");
+        } else if (!verifyInArray(userNumbers , numeroInserito)) {
+          userNumbers.push(numeroInserito);
+          console.log(userNumbers);
+
         }
+
       }
+// Restituzione del punteggio all'utente
+
+      alert("I numeri che hai indovinato sono " + numeriIndovinati.length);
+      location.reload();
 
     }
 
