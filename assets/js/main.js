@@ -41,9 +41,11 @@ $(function () {
   while (casualNumbers.length < 5) {
 
     var numberComputer = randomOneTo(100);
-    var list = list + " " + numberComputer;
+
 
     if (!verifyInArray(casualNumbers , numberComputer)) {
+      var list = list + " " + numberComputer;
+
       casualNumbers.push(numberComputer);
       numberList.text(list);
     }
@@ -94,6 +96,7 @@ $(function () {
         }
 
       }
+      
       // Restituzione del punteggio all'utente
 
       alert("I numeri che hai indovinato sono " + numeriIndovinati.length + " ovvero: " + numeriIndovinati);
