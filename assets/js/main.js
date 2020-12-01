@@ -96,11 +96,20 @@ $(function () {
         }
 
       }
-      
+
       // Restituzione del punteggio all'utente
 
-      alert("I numeri che hai indovinato sono " + numeriIndovinati.length + " ovvero: " + numeriIndovinati);
-      location.reload();
+      if (numeriIndovinati.length == 0) {
+        alert("Non hai indovinato nessun numero! Qualche problema di memoria?");
+        location.reload();
+      } else if (numeriIndovinati.length == 1) {
+        alert("Hai indovinato un solo numero ed è " + numeriIndovinati);
+        location.reload();
+      } else {
+        alert("I numeri che hai indovinato sono " + numeriIndovinati.length + " ovvero: " + numeriIndovinati);
+        location.reload();
+      }
+
 
     }
 
