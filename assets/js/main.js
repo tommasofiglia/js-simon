@@ -17,13 +17,13 @@ $(function () {
   var seconds;
   var numeroInserito;
 
-// Scrivo una funzione che generi un numero da 1 a numero casuale.
+  // Scrivo una funzione che generi un numero da 1 a numero casuale.
 
   function randomOneTo(max) {
     return Math.floor(Math.random() * max) + 1;
   }
 
-// Scrivo una funzione che mi dica se un numero è presente in un array.
+  // Scrivo una funzione che mi dica se un numero è presente in un array.
 
   function verifyInArray(array, number) {
      var i = 0;
@@ -35,7 +35,7 @@ $(function () {
      }
   }
 
-// Ciclo while che inserisce 5 numeri casuali nell'array  casualNumbers a patto che questi non si ripetano. I numeri vengono anche stampari a schermo.
+  // Ciclo while che inserisce 5 numeri casuali nell'array  casualNumbers a patto che questi non si ripetano. I numeri vengono anche stampari a schermo.
 
   var list = "";
   while (casualNumbers.length < 5) {
@@ -52,7 +52,7 @@ $(function () {
 
   console.log(casualNumbers);
 
-// Scrivo cosa succede quando clicco su "Avvia Gioco".
+  // Scrivo cosa succede quando clicco su "Avvia Gioco".
 
   startButton.click(function() {
     seconds = 30;
@@ -60,13 +60,21 @@ $(function () {
 
     hiddenElements.removeClass('hidden');
 
-    setTimeout(game, 30000);
+    //Richiamo due funzioni che definisco in seguito
 
-// Funzione che, passati i 30 secondi, cancella il testo contenente i numeri e apre il prompt per fare giocare l'utente
+    setTimeout(removepcnumbers, 30000)
+    setTimeout(game, 30100);
+
+    //Funzione che rimuove i numeri da ricordare dallo schermo dopo 30 secondi.
+
+    function removepcnumbers() {
+      hiddenElements.addClass('hidden');
+    }
+
+    // Funzione che, passati i 30 secondi, cancella il testo contenente i numeri e apre il prompt per fare giocare l'utente
 
     function game() {
 
-      hiddenElements.addClass('hidden');
 
       for (var i = 0; userNumbers.length < 5; i++) {
         var numeroInserito = Number(prompt('Aggiungi uno dei numeri visti prima'));
@@ -81,11 +89,12 @@ $(function () {
         } else if (!verifyInArray(userNumbers , numeroInserito)) {
           userNumbers.push(numeroInserito);
           console.log(userNumbers);
-
+        } else if (verifyInArray(userNumbers , numeroInserito)) {
+          alert("Hai già inserito questo numero");
         }
 
       }
-// Restituzione del punteggio all'utente
+      // Restituzione del punteggio all'utente
 
       alert("I numeri che hai indovinato sono " + numeriIndovinati.length);
       location.reload();
