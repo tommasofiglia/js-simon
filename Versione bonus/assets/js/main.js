@@ -64,7 +64,7 @@ $(function () {
 
     //Richiamo due funzioni che definisco in seguito
 
-    setTimeout(removepcnumbers, 30000)
+    setTimeout(removepcnumbers, 30000);
     setTimeout(game, 30100);
 
     //Funzione che rimuove i numeri da ricordare dallo schermo dopo 30 secondi.
